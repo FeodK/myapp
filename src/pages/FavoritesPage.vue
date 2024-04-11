@@ -27,7 +27,7 @@ onMounted(async () => {
       <InfoBlock
         title="Закладок нет :("
         description="Вы ничего не добавили в закладки."
-        image-url="/emoji-1.png"
+        image-url="emoji-1.png"
       />
     </div>
     <div v-else>

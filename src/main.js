@@ -12,8 +12,8 @@ import Favorites from './pages/FavoritesPage.vue'
 const app = createApp(App);
 
 const routes = [
-  { path: "/", name: 'Home', component: Home },
-  { path: "/favorites", name: 'Favorites', component: Favorites },
+  { path: "/myapp/", name: 'Home', component: Home },
+  { path: "/myapp/favorites", name: 'Favorites', component: Favorites },
 ];
 
 const router = createRouter({

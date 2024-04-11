@@ -1,23 +1,21 @@
 <script setup>
-import { ref } from 'vue'
-
+import { ref } from "vue";
 
 defineProps({
   totalPrice: Number,
 });
 
-const emit = defineEmits(["openDrawer",]);
+const emit = defineEmits(["openDrawer"]);
 
-const menuOpen = ref(false)
+const menuOpen = ref(false);
 
 const closeMenu = () => {
-  menuOpen.value = false
-}
+  menuOpen.value = false;
+};
 
 const openMenu = () => {
-  menuOpen.value = true
-}
-
+  menuOpen.value = true;
+};
 </script>
 
 <template>
@@ -34,8 +32,8 @@ const openMenu = () => {
       </div></RouterLink
     >
 
-    <ul 
-      class=" hidden md:flex mdflex-col lg:flex-row md:justify-center items-center gap-4 xl:gap-10"
+    <ul
+      class="hidden md:flex mdflex-col lg:flex-row md:justify-center items-center gap-4 xl:gap-10"
     >
       <li
         @click="() => emit('openDrawer')"
@@ -60,53 +58,65 @@ const openMenu = () => {
         <img src="/profile.svg" alt="Profile" />
         <span>Профиль</span>
       </li>
-
     </ul>
 
-    <ul v-if="menuOpen"
-      class="fixed top-0 left-0 overflow-hidden bg-white h-screen w-full z-10 flex flex-col justify-center items-center gap-10"
-    >
-      <li
-        @click="() => emit('openDrawer')"
-        class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
-      >
-        <img src="/cart.svg" alt="Cart" />
-        <b>{{ totalPrice }} руб.</b>
-      </li>
-
-      <RouterLink to="/myapp/favorites"
-        ><li
-          class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
-        >
-          <img src="/heart.svg" alt="" />
-          <span>Закладки</span>
-        </li></RouterLink
-      >
-
-      <li
-        class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
-      >
-        <img src="/profile.svg" alt="Profile" />
-        <span>Профиль</span>
-      </li>
-
-      <li @click="closeMenu" class="md:hidden cursor-pointer">
+    <div v-if="menuOpen" class="fixed top-0 left-0 overflow-hidden bg-white h-screen w-full z-10 ">
+      <div class="flex items-center gap-5 mb-8 p-6">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          @click="closeMenu"
+          class="opacity-30 cursor-pointer rotate-180 transition hover:opacity-100 hover:-translate-x-1"
+          width="16"
+          height="14"
+          viewBox="0 0 16 14"
           fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            d="M1 7H14.7143"
+            stroke="black"
+            stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M6 18 18 6M6 6l12 12"
+          />
+          <path
+            d="M8.71436 1L14.7144 7L8.71436 13"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           />
         </svg>
-      </li>
-    </ul>
+        <h2 class="text-2xl font-bold">Меню</h2>
+      </div>
+
+      <ul
+        class="flex flex-col gap-10 p-6"
+      >
+        <li
+          @click="() => emit('openDrawer')"
+          class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
+        >
+          <img src="/cart.svg" alt="Cart" />
+          <b>{{ totalPrice }} руб.</b>
+        </li>
+        <RouterLink to="/myapp/favorites"
+          ><li
+            @click="closeMenu"
+            class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
+          >
+            <img src="/heart.svg" alt="" />
+            <span>Закладки</span>
+          </li></RouterLink
+        >
+        <li
+          @click="closeMenu"
+          class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
+        >
+          <img src="/profile.svg" alt="Profile" />
+          <span>Профиль</span>
+        </li>
+      </ul>
+    </div>
     <button @click="openMenu" class="md:hidden">
       <svg
         xmlns="http://www.w3.org/2000/svg"

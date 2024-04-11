@@ -60,62 +60,73 @@ const openMenu = () => {
       </li>
     </ul>
 
-    <div v-if="menuOpen" class="fixed top-0 left-0 overflow-hidden bg-white h-full w-full z-10 ">
-      <div class="flex items-center gap-5 mb-8 p-6">
-        <svg
-          @click="closeMenu"
-          class="opacity-30 cursor-pointer rotate-180 transition hover:opacity-100 hover:-translate-x-1"
-          width="16"
-          height="14"
-          viewBox="0 0 16 14"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <div v-if="menuOpen">
+      <div class="fixed top-0 left-0 h-full w-full bg-black z-10 opacity-70"></div>
+      <div class="bg-white w-full h-full fixed right-0 top-0 z-20 p-8 overflow-y-scroll">
+        <div class="flex items-center gap-5 mb-8 p-6">
+          <svg
+            @click="closeMenu"
+            class="opacity-30 cursor-pointer rotate-180 transition hover:opacity-100 hover:-translate-x-1"
+            width="16"
+            height="14"
+            viewBox="0 0 16 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 7H14.7143"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.71436 1L14.7144 7L8.71436 13"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <h2 class="text-2xl font-bold">Меню</h2>
+        </div>
+        <ul
+          class="flex flex-col gap-10 p-6"
         >
-          <path
-            d="M1 7H14.7143"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M8.71436 1L14.7144 7L8.71436 13"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        <h2 class="text-2xl font-bold">Меню</h2>
-      </div>
-
-      <ul
-        class="flex flex-col gap-10 p-6"
-      >
-        <li
-          @click="() => emit('openDrawer')"
-          class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
-        >
-          <img src="/cart.svg" alt="Cart" />
-          <b>{{ totalPrice }} руб.</b>
-        </li>
-        <RouterLink to="/myapp/favorites"
-          ><li
+        <RouterLink to="/myapp/"
+            ><li
+              @click="closeMenu"
+              class="flex items-center gap-3 cursor-pointer text-gray-700 hover:text-black"
+            >
+              <img src="/logo.png" width="20" height="20" alt="Logo" />
+              <b>Главная страница</b>
+            </li></RouterLink
+          >
+          <li
             @click="closeMenu"
             class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
           >
-            <img src="/heart.svg" alt="" />
-            <span>Закладки</span>
-          </li></RouterLink
-        >
-        <li
-          @click="closeMenu"
-          class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
-        >
-          <img src="/profile.svg" alt="Profile" />
-          <span>Профиль</span>
-        </li>
-      </ul>
+            <img @click="() => emit('openDrawer')" src="/cart.svg" alt="Cart" />
+            <b @click="() => emit('openDrawer')">{{ totalPrice }} руб.</b>
+          </li>
+          <RouterLink to="/myapp/favorites"
+            ><li
+              @click="closeMenu"
+              class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
+            >
+              <img src="/heart.svg" alt="" />
+              <span>Закладки</span>
+            </li></RouterLink
+          >
+          <li
+            @click="closeMenu"
+            class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black"
+          >
+            <img src="/profile.svg" alt="Profile" />
+            <span>Профиль</span>
+          </li>
+        </ul>
+      </div>
     </div>
     <button @click="openMenu" class="md:hidden">
       <svg

@@ -8,7 +8,7 @@ const emit = defineEmits(['openDrawer'])
 
 <template>
   <header class="flex flex-col xl:flex-row justify-between border-b border-slate-200 px-10 py-8">
-    <RouterLink to="/"
+    <RouterLink to="/myapp/"
       ><div class="flex items-center justify-center mb-4 xl:mb-0 gap-4">
         <img src="/logo.png" alt="Logo" class="w-10" />
         <div>
@@ -27,7 +27,7 @@ const emit = defineEmits(['openDrawer'])
         <b>{{ totalPrice }} руб.</b>
       </li>
 
-      <RouterLink to="/favorites"
+      <RouterLink to="/myapp/favorites"
         ><li class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-black">
           <img src="/heart.svg" alt="" />
           <span>Закладки</span>

@@ -30,6 +30,7 @@ const removeFromCart = (item) => {
   item.isAdded = false
 }
 
+
 watch(
   cart,
   () => {
@@ -43,7 +44,7 @@ provide('cart', {
   closeDrawer,
   openDrawer,
   addToCart,
-  removeFromCart
+  removeFromCart,
 })
 </script>
 

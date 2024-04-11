@@ -60,7 +60,7 @@ const openMenu = () => {
       </li>
     </ul>
 
-    <div v-if="menuOpen" class="fixed top-0 left-0 overflow-hidden bg-white h-screen w-full z-10 ">
+    <div v-if="menuOpen" class="fixed top-0 left-0 overflow-hidden bg-white h-full w-full z-10 ">
       <div class="flex items-center gap-5 mb-8 p-6">
         <svg
           @click="closeMenu"

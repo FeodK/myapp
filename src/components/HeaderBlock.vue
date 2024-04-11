@@ -26,7 +26,7 @@ const openMenu = () => {
       ><div class="flex items-center justify-center mb-4 xl:mb-0 gap-4">
         <img src="/logo.png" alt="Logo" class="w-10" />
         <div>
-          <h2 class="text-xl font-bold uppercase">Vue Sneakers</h2>
+          <h2 class="text-xl font-bold uppercase">Shop Sneakers</h2>
           <p class="text-slate-400">Магазин лучших кроссовок</p>
         </div>
       </div></RouterLink
